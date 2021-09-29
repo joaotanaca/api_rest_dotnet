@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/tanaca/.dotnet/store/|arch|/|tfm|",
+      "/home/tanaca/.nuget/packages"
+    ]
+  }
+}
