@@ -1,16 +1,9 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FilmesAPI.Models
+namespace FilmeAPI.Data.Dtos
 {
-    public class Filme
+    public class FilmeDTO
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        [Required]
-        public Guid Id { get; set; }
-
         [Required(ErrorMessage = "Titulo é obrigatorio")]
         public string Titulo { get; set; }
 
@@ -22,6 +15,5 @@ namespace FilmesAPI.Models
 
         [Range(1, 200, ErrorMessage = "A duração deve ter no maximo 200 minutos")]
         public int Duracao { get; set; }
-
     }
 }
