@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FilmeAPI.Data.Dtos;
 using FilmesAPI.Data;
 using FilmesAPI.Models;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -51,14 +52,19 @@ namespace FilmeAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaFilme(string id, [FromBody] Filme body)
+        public IActionResult AtualizaFilme(string id, [FromBody] FilmeDTO body)
         {
             Filme filme = filmes.Filmes.FirstOrDefault(filme => filme.Id == new Guid(id));
             if (filme == null)
             {
                 return NotFound();
             }
-            filme = body;
+
+            filme.Duracao = body.Duracao;
+            filme.Diretor = body.Diretor;
+            filme.Genero = body.Genero;
+            filme.Titulo = body.Titulo;
+
             filmes.SaveChanges();
             return NoContent();
         }
